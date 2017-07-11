@@ -10,7 +10,6 @@ Note that there is a natural order. Elements are removed in the reverse order of
 DO NOT use an array and the native push/pop method in your implementation. That's too easy, yeah? =P
 Use an object as the underlying data structure.
 
-
 *** Operations:
 
 myStack.push(value)
