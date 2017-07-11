@@ -1,7 +1,7 @@
 /*
 
 STACK
-
+//thomasxmartinez
 Abstract data type
 LIFO - Last in, first out
 Collection of elements with push and pop operations.
