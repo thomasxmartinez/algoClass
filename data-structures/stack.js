@@ -27,7 +27,6 @@ Similiar to pop, but do not remove element from collection
 myStack.count()
 => number of elements in stack
 
-
 *** Additional Exercises:
 
 Modify your stack to take a max capacity and return a string if you try to add an element when there's no more room:
@@ -72,7 +71,6 @@ Stack.prototype.count = function() {
   // implement me...
 };
 // Time complexity:
-
 
 /*
 *** Exercises:
