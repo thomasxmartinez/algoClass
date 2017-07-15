@@ -1,32 +1,5 @@
 /*
 
-STACK
-//thomasxmartinez
-Abstract data type
-LIFO - Last in, first out
-Collection of elements with push and pop operations.
-Note that there is a natural order. Elements are removed in the reverse order of their addition.
-
-DO NOT use an array and the native push/pop method in your implementation. That's too easy, yeah? =P
-Use an object as the underlying data structure.
-
-*** Operations:
-
-myStack.push(value)
-=> count of stack
-add value to collection
-
-myStack.pop()
-=> most recent element added collection
-Remove item so that it is no longer in collection
-
-myStack.peek()
-=> most recent element added collection
-Similiar to pop, but do not remove element from collection
-
-myStack.count()
-=> number of elements in stack
-
 *** Additional Exercises:
 
 Modify your stack to take a max capacity and return a string if you try to add an element when there's no more room:
@@ -44,16 +17,18 @@ myStack.until(7)
 => 4
 What's the time complexity?
 
-
-
  */
 
-function Stack(capacity) {
-  // implement me...
-}
+var Stack = function (capacity) {
+  this.capacity = capacity || Infinity;
+  this.storage = {};
+  this.count = 0;
+};
 
-Stack.prototype.push = function(value) {
-  // implement me...
+Stack.prototype.push = function (value) {
+  if (this.count < this.capacity) {
+    this.storage[this.count++] = value;
+  }
 };
 // Time complexity:
 
@@ -90,3 +65,34 @@ You are given three towers (stacks) and N disks, each of different size. You can
    3. no disk can be placed on top of a disk that is smaller than it
 The disks begin on tower#1. Write a function that will move the disks from tower#1 to tower#3 in such a way that none of the constraints are violated.
  */
+
+ var Stack = function () {
+   this.storage = '';
+ };
+
+ Stack.prototype.push = function (val) {
+   this.storage = this.storage.concat(':', val);
+ };
+
+ Stack.prototype.pop = function (val) {
+   var str = this.storage.slice(this.storage.lastIndexOf(':') + 1);
+   this.storage = this.storage.substring(0, this.storage.lastIndexOf(':'));
+   return str;
+ };
+
+ Stack.prototype.size = function (val) {
+   for (var i = 0; i < val.length; i++) {
+     if (val[i] === ':') {
+       count++;
+     }
+   }
+   console.log(count);
+ };
+
+ var myWeeklyMenu = new Stack();
+
+ myWeeklyMenu.push('RedBeans');
+ myWeeklyMenu.push('eatAninja');
+ myWeeklyMenu.push('lickitySPLIT');
+ myWeeklyMenu.pop();
+ myWeeklyMenu.size(myWeeklyMenu.storage);

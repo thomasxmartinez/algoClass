@@ -38,34 +38,56 @@ yourHouse.countFloors();
 myHouse.countFloors();
 theOffice.countFloors();
 
-var Stack = function () {
-  this.storage = '';
+var Stack = function (capacity) {
+  this.capacity = capacity || Infinity;
+  this.storage = {};
+  this.count = 0;
 };
 
-Stack.prototype.push = function (val) {
-  this.storage = this.storage.concat(':', val);
-};
-
-Stack.prototype.pop = function (val) {
-  var str = this.storage.slice(this.storage.lastIndexOf(':') + 1);
-  this.storage = this.storage.substring(0, this.storage.lastIndexOf(':'));
-  return str;
-};
-
-Stack.prototype.size = function (val) {
-  var count = 0;
-  for (var i = 0; i < val.length; i++) {
-    if (val[i] === ':') {
-      count++;
-    }
+Stack.prototype.push = function (value) {
+  if (this.count < this.capacity) {
+    this.storage[this.count++] = value;
+    return this.count;
   }
-  console.log(count);
+  return 'too much man, stop it now';
 };
 
-var myWeeklyMenu = new Stack();
+Stack.prototype.pop = function() {
+  var value = this.storage[--this.count];
+  delete this.storage[this.count];
+  }
+
+};
+// Stack.prototype.pop = function (val) {
+//   var str = this.storage.slice(this.storage.lastIndexOf(':') + 1);
+//   this.storage = this.storage.substring(0, this.storage.lastIndexOf(':'));
+//   return str;
+// };
+//
+// Stack.prototype.size = function (val) {
+//   var count = 0;
+//   for (var i = 0; i < val.length; i++) {
+//     if (val[i] === ':') {
+//       count++;
+//     }
+//   }
+//   console.log(count);
+// };
+
+// Stack.prototype.capacity = function (capacity) {
+//   console.log(this.storage.length);
+//   if (capacity <= this.storage.length) {
+//     console.log('cannot fit');
+//   } else {
+//     console.log(capacity);
+//   }
+// };
+
+var myWeeklyMenu = new Stack(2);
 
 myWeeklyMenu.push('RedBeans');
 myWeeklyMenu.push('eatAninja');
 myWeeklyMenu.push('lickitySPLIT');
-myWeeklyMenu.pop();
-myWeeklyMenu.size(myWeeklyMenu.storage);
+console.log(myWeeklyMenu);
+// myWeeklyMenu.pop();
+// myWeeklyMenu.size(myWeeklyMenu.storage);
