@@ -18,7 +18,6 @@ myStack.until(7)
 What's the time complexity?
 
  */
-
 var Stack = function (capacity) {
   this.capacity = capacity || Infinity;
   this.storage = {};
@@ -28,17 +27,22 @@ var Stack = function (capacity) {
 Stack.prototype.push = function (value) {
   if (this.count < this.capacity) {
     this.storage[this.count++] = value;
+    return this.count;
   }
+  return 'too much man, stop it now';
 };
-// Time complexity:
 
-Stack.prototype.pop = function() {
-  // implement me...
+Stack.prototype.pop = function () {
+  var value = this.storage[--this.count]; // eslint-disable-line
+  delete this.storage[this.count];
+  if (this.count < 0) {
+    this.count = 0;
+  }
+  return value;
 };
-// Time complexity:
 
-Stack.prototype.peek = function() {
-  // implement me...
+Stack.prototype.peek = function () {
+  return this.storage[this.count - 1];
 };
 // Time complexity:
 
